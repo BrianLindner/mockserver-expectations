@@ -1,0 +1,26 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "(\/(?!mockserver\/|mockserver$).*)?$"
+    },
+    "id": "catchall-001",
+    "priority": -999,
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "default catch all GET"
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "(\/(?!mockserver\/|mockserver$).*)?$"
+    },
+    "id": "catchall-002",
+    "priority": -999,
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "default catch all POST"
+    }
+  }
+]

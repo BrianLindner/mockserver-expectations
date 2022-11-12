@@ -1,0 +1,24 @@
+---
+
+version: "3.7"
+
+services:
+  mockserver:
+    image: mockserver/mockserver
+    container_name: mockserver
+    restart: unless-stopped
+    # security_opts:
+    #   - no-new-privileges:true
+    ports:
+      - 9090:1090
+    environment:
+      - MOCKSERVER_SERVER_PORT=1090
+      - MOCKSERVER_LOG_LEVEL=DEBUG
+      - MOCKSERVER_PROPERTY_FILE=/config/mockserver.properties
+      - MOCKSERVER_WATCH_INITIALIZATION_JSON=true
+      - MOCKSERVER_INITIALIZATION_JSON_PATH=/expectations/*.json
+      - MOCKSERVER_PERSIST_EXPECTATIONS=true
+      - MOCKSERVER_PERSISTED_EXPECTATIONS_PATH=/config/exported_mockserverInitialization.json
+    volumes:
+      - ./config:/config
+      - ./expectations:/expectations
